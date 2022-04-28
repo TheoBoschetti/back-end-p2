@@ -5,15 +5,13 @@ const cors = require('cors')
 
 const app = express()
 
-const data = require('./tas-de-merde.json')
+const heroes = require('./app/route/heroes')
 
 app.use(cors())
 
 app.use(helmet())
 app.use(express.json())
 
-app.get('/', (req, res) => {
-  res.status(200).send(data)
-})
+app.use('/hero', heroes)
 
 app.listen(process.env.PORT, () => console.info('Server launched.'))
